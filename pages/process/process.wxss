@@ -1,0 +1,266 @@
+.step-scroll {
+  white-space: nowrap;
+  margin-top: 16rpx;
+}
+
+.step-line {
+  display: flex;
+}
+
+.step-item {
+  width: 56rpx;
+  height: 56rpx;
+  line-height: 56rpx;
+  text-align: center;
+  border-radius: 50%;
+  margin-right: 14rpx;
+  font-size: 24rpx;
+  border: 1px solid #334155;
+  color: #cbd5e1;
+}
+
+.step-done {
+  border-color: #22c55e;
+  color: #22c55e;
+}
+
+.step-current {
+  border-color: #22d3ee;
+  color: #22d3ee;
+}
+
+.step-ready {
+  border-color: #22c55e;
+  color: #22c55e;
+}
+
+.checkpoint-title {
+  margin-top: 16rpx;
+  margin-bottom: 8rpx;
+  color: #e2e8f0;
+  font-weight: 600;
+}
+
+.checkpoint-group {
+  margin-top: 16rpx;
+}
+
+.checkpoint-summary {
+  color: #22c55e;
+  font-size: 24rpx;
+  margin-bottom: 8rpx;
+}
+
+.btn-export {
+  margin-top: 12rpx;
+  width: 100%;
+}
+
+.check-item {
+  display: flex;
+  align-items: center;
+  padding: 0 18rpx;
+  height: 76rpx;
+  border-radius: 12rpx;
+  color: #cbd5e1;
+  border: 1px solid transparent;
+  transition: all 0.2s ease;
+  margin-bottom: 12rpx;
+}
+
+.check-item-done {
+  background: rgba(34, 197, 94, 0.2);
+  border-color: rgba(34, 197, 94, 0.35);
+}
+
+.check-text {
+  margin-left: 0;
+  font-size: 28rpx;
+  flex: 1;
+  height: 76rpx;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.checkpoint-index {
+  width: 48rpx;
+  height: 76rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #94a3b8;
+  font-size: 26rpx;
+}
+
+.check-text text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.check-text-done {
+  color: #86efac;
+}
+
+.check-box {
+  width: 0;
+  height: 76rpx;
+  border: 0;
+  background: transparent;
+  overflow: hidden;
+}
+
+.check-box.checked {
+  border: 0;
+  background: transparent;
+}
+
+.check-mark {
+  color: transparent;
+}
+
+.check-box:not(.checked) .check-mark {
+  color: transparent;
+}
+
+.done-tag {
+  color: #22c55e;
+  font-size: 22rpx;
+  border: 1px solid rgba(34, 197, 94, 0.7);
+  border-radius: 999rpx;
+  padding: 4rpx 10rpx;
+  height: 40rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.complete-btn {
+  height: 96rpx;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 34rpx;
+  font-weight: 700;
+  border-radius: 16rpx;
+  flex: 1;
+  margin: 0;
+}
+
+.control-row {
+  display: flex;
+  align-items: center;
+  gap: 18rpx;
+  margin: 0;
+}
+
+.circle-btn {
+  width: 96rpx;
+  height: 96rpx;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 1px solid #334155;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.circle-icon {
+  color: #0b1220;
+  font-size: 54rpx;
+  line-height: 1;
+  font-weight: 700;
+}
+
+/* 底部固定操作栏 */
+.bottom-bar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 18rpx 24rpx;
+  padding-bottom: calc(18rpx + env(safe-area-inset-bottom));
+  background: rgba(2, 6, 23, 0.92);
+  backdrop-filter: blur(10px);
+  border-top: 1px solid #1e293b;
+  z-index: 999;
+}
+
+/* 防止内容被底栏遮挡 */
+.container {
+  padding-bottom: 200rpx;
+}
+
+/* 确认开始界面 */
+.confirm-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 40rpx;
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+}
+
+.confirm-card {
+  background: rgba(30, 41, 59, 0.9);
+  border: 1px solid #334155;
+  border-radius: 24rpx;
+  padding: 60rpx 40rpx;
+  width: 100%;
+  max-width: 600rpx;
+  text-align: center;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 20rpx 60rpx rgba(0, 0, 0, 0.4);
+}
+
+.confirm-icon {
+  font-size: 80rpx;
+  margin-bottom: 30rpx;
+}
+
+.confirm-title {
+  font-size: 40rpx;
+  font-weight: 700;
+  color: #f8fafc;
+  margin-bottom: 24rpx;
+}
+
+.confirm-desc {
+  font-size: 28rpx;
+  color: #94a3b8;
+  line-height: 1.6;
+  margin-bottom: 40rpx;
+}
+
+.confirm-tips {
+  background: rgba(15, 23, 42, 0.6);
+  border-radius: 16rpx;
+  padding: 30rpx;
+  margin-bottom: 40rpx;
+  text-align: left;
+}
+
+.tip-item {
+  display: block;
+  font-size: 26rpx;
+  color: #cbd5e1;
+  line-height: 1.8;
+}
+
+.btn-confirm-start {
+  width: 100%;
+  height: 96rpx;
+  background: linear-gradient(135deg, #22d3ee 0%, #0ea5e9 100%);
+  color: #000000;
+  font-size: 32rpx;
+  font-weight: 600;
+  border-radius: 16rpx;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  box-shadow: 0 8rpx 24rpx rgba(34, 211, 238, 0.4);
+}

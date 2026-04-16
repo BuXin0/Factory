@@ -1,0 +1,52 @@
+<view class="container">
+  <view class="card admin-card" wx:if="{{isAdmin}}" bindtap="goToAdmin">
+    <view class="admin-header">
+      <text class="admin-title">管理员控制台</text>
+    </view>
+    <text class="admin-desc">监视所有员工操作</text>
+  </view>
+
+  <view class="card">
+    <view class="title">当前流程步骤</view>
+    <view class="sub">已完成 {{completedByStepCount}} / 8</view>
+    <view style="margin-top: 16rpx; font-size: 36rpx; font-weight: 700;">{{currentStepObj.name}}</view>
+  </view>
+
+  <view class="card">
+    <view class="title">流程进度</view>
+    <progress
+      percent="{{progressPercent}}"
+      active="true"
+      stroke-width="12"
+      activeColor="#22d3ee"
+      backgroundColor="#334155"
+      style="margin-top:16rpx;"
+    />
+    <view class="sub">已完成 {{completedByStepCount}} / 8 步，进度 {{progressPercent}}%</view>
+  </view>
+
+  <view class="card">
+    <view class="title">整体状态</view>
+    <view class="tag {{state.processStatus==='danger'?'danger':(state.processStatus==='warning'?'warn':'ok')}}" style="margin-top: 16rpx;">
+      {{statusText}}
+    </view>
+    <view class="sub">最近更新时间：{{state.updatedAt}}</view>
+  </view>
+
+  <view class="card">
+    <view class="title">操作员</view>
+    <input
+      class="input"
+      placeholder="输入当前操作员姓名"
+      value="{{operatorInput}}"
+      bindinput="onOperatorInput"
+    />
+    <button class="btn" type="primary" bindtap="saveOperator">保存操作员</button>
+  </view>
+
+  <view class="card logout-card" bindtap="logout">
+    <view class="logout-content">
+      <text class="logout-text">退出登录</text>
+    </view>
+  </view>
+</view>

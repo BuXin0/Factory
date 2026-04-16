@@ -1,0 +1,29 @@
+<view class="container">
+  <view class="card">
+    <view class="title">操作日志</view>
+    <view class="sub">自动记录步骤、操作员、时间和参数状态。</view>
+    <view class="btn-group">
+      <button class="btn" size="mini" bindtap="exportLogs">导出日志</button>
+      <button class="btn" size="mini" bindtap="clearLogs">清空日志</button>
+    </view>
+  </view>
+
+  <block wx:if="{{logs.length===0}}">
+    <view class="card">
+      <view class="sub">暂无日志，请先执行流程或调整参数。</view>
+    </view>
+  </block>
+
+  <block wx:for="{{logs}}" wx:key="id">
+    <view class="card">
+      <view class="row">
+        <text class="event">{{item.type}}</text>
+        <text class="time">{{item.time}}</text>
+      </view>
+      <view class="line">步骤：{{item.stepId}} - {{item.stepName}}</view>
+      <view class="line">操作员：{{item.operator}}</view>
+      <view class="line">状态：{{item.status}}</view>
+      <view class="line">温度：{{item.params.temperature}}°C，压力：{{item.params.pressure}}MPa，流量：{{item.params.flow}}L/min</view>
+    </view>
+  </block>
+</view>

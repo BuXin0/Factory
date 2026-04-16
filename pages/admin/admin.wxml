@@ -1,0 +1,95 @@
+<view class="container">
+  <view class="header">
+    <text class="back-btn" bindtap="goBack">返回</text>
+    <text class="title">管理员控制台</text>
+    <text></text>
+  </view>
+
+  <view class="admin-info">
+    <view class="admin-badge">管理员</view>
+    <text class="admin-name">{{currentUser.username}}</text>
+  </view>
+
+  <view class="section">
+    <view class="section-title">
+      <text class="title-text">员工列表</text>
+      <text class="count">({{users.length}}人)</text>
+    </view>
+    
+    <view class="user-list" wx:if="{{users.length > 0}}">
+      <view 
+        class="user-item {{selectedUser && selectedUser.username === item.username ? 'selected' : ''}}"
+        wx:for="{{users}}"
+        wx:key="username"
+        wx:for-item="item"
+        bindtap="selectUser"
+        data-username="{{item.username}}"
+      >
+        <view class="user-main">
+          <view class="user-info">
+            <text class="username">{{item.username}}</text>
+            <text class="phone">{{item.phone}}</text>
+          </view>
+          <view class="progress-section">
+            <view class="progress-bar">
+              <view class="progress-fill {{item.isCompleted ? 'completed' : ''}}" style="width: {{item.progressPercent}}%"></view>
+            </view>
+            <text class="progress-text">{{item.completedCount}}/8 {{item.progressPercent}}%</text>
+          </view>
+        </view>
+        <view class="user-actions">
+          <text class="register-time">{{item.createdAt}}</text>
+          <button class="btn-export-small" catchtap="exportUserProgress" data-username="{{item.username}}">
+            导出进度
+          </button>
+        </view>
+      </view>
+    </view>
+    
+    <view class="empty" wx:else>
+      <text>暂无员工注册</text>
+    </view>
+  </view>
+
+  <view class="section" wx:if="{{selectedUser}}">
+    <view class="section-title">
+      <text class="title-text">员工监控: {{selectedUser.username}}</text>
+    </view>
+    
+    <view class="user-detail">
+      <view class="detail-row">
+        <text class="label">用户名</text>
+        <text class="value">{{selectedUser.username}}</text>
+      </view>
+      <view class="detail-row">
+        <text class="label">手机号</text>
+        <text class="value">{{selectedUser.phone}}</text>
+      </view>
+      <view class="detail-row">
+        <text class="label">注册时间</text>
+        <text class="value">{{selectedUser.createdAt}}</text>
+      </view>
+    </view>
+
+    <view class="section-title sub">
+      <text class="title-text">最近操作记录</text>
+    </view>
+    
+    <view class="log-list" wx:if="{{userLogs.length > 0}}">
+      <view class="log-item" wx:for="{{userLogs}}" wx:key="id">
+        <view class="log-header">
+          <text class="log-type">{{item.type}}</text>
+          <text class="log-time">{{item.time}}</text>
+        </view>
+        <view class="log-content">
+          <text wx:if="{{item.stepName}}">步骤: {{item.stepName}}</text>
+          <text wx:if="{{item.params}}">参数: 温度{{item.params.temperature}}°C 压力{{item.params.pressure}}MPa 流量{{item.params.flow}}L/min</text>
+        </view>
+      </view>
+    </view>
+    
+    <view class="empty" wx:else>
+      <text>该员工暂无操作记录</text>
+    </view>
+  </view>
+</view>

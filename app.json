@@ -1,0 +1,39 @@
+{
+  "pages": [
+    "pages/auth/auth",
+    "pages/home/home",
+    "pages/process/process",
+    "pages/monitor/monitor",
+    "pages/logs/logs",
+    "pages/admin/admin"
+  ],
+  "window": {
+    "navigationBarTitleText": "生产流程控制",
+    "navigationBarBackgroundColor": "#0f172a",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#020617",
+    "backgroundTextStyle": "light"
+  },
+  "tabBar": {
+    "color": "#94a3b8",
+    "selectedColor": "#22d3ee",
+    "backgroundColor": "#0b1220",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/process/process",
+        "text": "流程"
+      },
+      {
+        "pagePath": "pages/logs/logs",
+        "text": "日志"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

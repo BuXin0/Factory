@@ -1,0 +1,8 @@
+<view class="container">
+  <view class="export-card">
+    <view class="export-title">一键导出检查表（CSV）</view>
+    <button class="btn btn-export" type="default" bindtap="exportCheckpointsTable">
+      导出并复制（CSV）
+    </button>
+  </view>
+</view>

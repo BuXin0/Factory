@@ -1,0 +1,95 @@
+<view class="container">
+  <!-- 确认开始界面 -->
+  <view class="confirm-container" wx:if="{{showConfirm}}">
+    <view class="confirm-card">
+      <view class="confirm-icon">📋</view>
+      <view class="confirm-title">流程操作确认</view>
+      <view class="confirm-desc">您即将进入生产流程操作界面，请确认已准备好开始工作。</view>
+      <view class="confirm-tips">
+        <text class="tip-item">• 请确保已佩戴好防护装备</text>
+        <text class="tip-item">• 请检查设备运行状态</text>
+        <text class="tip-item">• 请按步骤完成关键检查项</text>
+      </view>
+      <button class="btn-confirm-start" bindtap="confirmStart">确认开始</button>
+    </view>
+  </view>
+
+  <!-- 流程步骤界面 -->
+  <block wx:if="{{!showConfirm}}">
+  <view class="card">
+    <view class="title">8步流程导航</view>
+    <scroll-view scroll-x="true" class="step-scroll">
+      <view class="step-line">
+        <block wx:for="{{steps}}" wx:key="id">
+          <view
+            class="step-item {{item.stateClass}}"
+            bindtap="onNavStepTap"
+            data-step-id="{{item.id}}"
+          >
+            <text>{{item.id}}</text>
+          </view>
+        </block>
+      </view>
+    </scroll-view>
+  </view>
+
+  <view class="card" bindtouchstart="onTouchStart" bindtouchend="onTouchEnd">
+    <view class="title">步骤 {{steps[viewStepIndex].upperId}}：{{steps[viewStepIndex].name}}</view>
+    <view class="sub">标准时长：{{steps[viewStepIndex].duration}}</view>
+
+    <view class="checkpoint-title">关键检查项</view>
+    <view class="checkpoint-summary">
+      已完成 {{checkpointCheckedValues.length}} / {{steps[viewStepIndex].checkpoints.length}}
+    </view>
+    <view class="checkpoint-group">
+      <block
+        wx:for="{{steps[viewStepIndex].checkpoints}}"
+        wx:for-index="cpIndex"
+        wx:key="*this"
+      >
+        <view
+          class="check-item {{checkpointDoneMap[item] ? 'check-item-done' : ''}}"
+          bindtap="toggleCheckpoint"
+          data-item="{{item}}"
+        >
+          <view
+            class="check-box {{checkpointDoneMap[item] ? 'checked' : ''}}"
+            aria-disabled="{{checkpointDisabled}}"
+          >
+            <text class="check-mark">{{checkpointDoneMap[item] ? '✓' : ''}}</text>
+          </view>
+          <view class="checkpoint-index">{{cpIndex + 1}}</view>
+          <view class="check-text {{checkpointDoneMap[item] ? 'check-text-done' : ''}}">
+            <text>{{item}}</text>
+          </view>
+          <view class="done-tag" wx:if="{{checkpointDoneMap[item]}}">
+            <text>已完成</text>
+          </view>
+        </view>
+      </block>
+    </view>
+
+  </view>
+
+  <view class="bottom-bar">
+    <view class="control-row">
+      <view class="circle-btn" bindtap="prevStep" aria-label="上一步">
+        <text class="circle-icon">‹</text>
+      </view>
+
+      <button
+        class="btn complete-btn"
+        type="primary"
+        bindtap="completeStep"
+        disabled="{{(checkpointCheckedValues.length < steps[viewStepIndex].checkpoints.length) || ((viewStepIndex+1) !== state.currentStep)}}"
+      >
+        完成
+      </button>
+
+      <view class="circle-btn" bindtap="nextStep" aria-label="下一步">
+        <text class="circle-icon">›</text>
+      </view>
+    </view>
+  </view>
+  </block>
+</view>

@@ -1,0 +1,85 @@
+<view class="container">
+  <view class="auth-card">
+    <view class="title">{{mode === 'login' ? '登录' : '注册'}}</view>
+    
+    <view class="input-group">
+      <view class="input-label">用户名</view>
+      <input
+        id="usernameInput"
+        class="input"
+        placeholder="请输入用户名"
+        value="{{username}}"
+        bindinput="onUsernameInput"
+        bindconfirm="onUsernameConfirm"
+        focus="{{focusField === 'usernameInput'}}"
+        disabled="{{loading}}"
+      />
+    </view>
+    
+    <view class="input-group">
+      <view class="input-label">密码</view>
+      <input
+        id="passwordInput"
+        class="input"
+        type="password"
+        placeholder="请输入密码"
+        value="{{password}}"
+        bindinput="onPasswordInput"
+        bindconfirm="onPasswordConfirm"
+        focus="{{focusField === 'passwordInput'}}"
+        disabled="{{loading}}"
+      />
+    </view>
+    
+    <view class="input-group" wx:if="{{mode === 'register'}}">
+      <view class="input-label">确认密码</view>
+      <input
+        id="confirmPasswordInput"
+        class="input"
+        type="password"
+        placeholder="请再次输入密码"
+        value="{{confirmPassword}}"
+        bindinput="onConfirmPasswordInput"
+        bindconfirm="onConfirmPasswordConfirm"
+        focus="{{focusField === 'confirmPasswordInput'}}"
+        disabled="{{loading}}"
+      />
+    </view>
+    
+    <view class="input-group" wx:if="{{mode === 'register'}}">
+      <view class="input-label">手机号</view>
+      <input
+        id="phoneInput"
+        class="input"
+        placeholder="请输入手机号"
+        value="{{phone}}"
+        bindinput="onPhoneInput"
+        bindconfirm="onPhoneConfirm"
+        focus="{{focusField === 'phoneInput'}}"
+        disabled="{{loading}}"
+      />
+    </view>
+    
+    <view class="error" wx:if="{{error}}">{{error}}</view>
+    
+    <button
+      class="btn-primary"
+      bindtap="{{mode === 'login' ? 'handleLogin' : 'handleRegister'}}"
+      loading="{{loading}}"
+      disabled="{{loading}}"
+    >
+      {{mode === 'login' ? '登录' : '注册'}}
+    </button>
+    
+    <view class="switch-mode">
+      {{mode === 'login' ? '还没有账号？' : '已有账号？'}}
+      <text class="link" bindtap="switchMode">
+        {{mode === 'login' ? '立即注册' : '立即登录'}}
+      </text>
+    </view>
+  </view>
+  
+  <view class="footer">
+    <text class="footer-text">生产流程控制系统 v1.0</text>
+  </view>
+</view>
