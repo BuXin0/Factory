@@ -53,9 +53,10 @@ function initAuthPage() {
   document.getElementById('switch-mode').addEventListener('click', switchMode);
 
   // 回车键提交
-  document.querySelectorAll('#auth-page input').forEach(input => {
-    input.addEventListener('keypress', (e) => {
+  document.querySelectorAll('.input-group input').forEach(input => {
+    input.addEventListener('keydown', (e) => {
       if (e.key === 'Enter') {
+        e.preventDefault();
         handleAuth();
       }
     });
